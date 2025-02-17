@@ -7,6 +7,11 @@ The goal is to produce a codebase that might be useful for any reflow oven where
  - Temperature via a thermistor (similar to 3d printer)
  - Lilygo t-display controller (with a daughter board), but this might be changed later for something more "modular"
 
+## But Why?
+
+Yes, I know theres tonnes of toaster oven reflow ovens around (I even have one!), but this one is half the size
+and half the price and felt like a fun project...
+
 ## General Thoughts...
 
 Much of the code will be similar to 3d printers because alot of the features are similar, plus to make it module it
@@ -19,3 +24,8 @@ thermistors, etc.
 
 ## DONE
  - add wifimanager - done
+ 
+## Pics
+
+And here the oven is in all its glory (prior to a working oven - coke can to show off size)
+![image](https://github.com/takigama/KmartReflowMiniOven/blob/main/Pics/20250211_014657_ws.jpg?raw=true)
