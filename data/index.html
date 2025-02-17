@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./css/favicon.ico">
+    <!-- borrowed from "dashboard" example at boostrap-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/base.js"></script>
+</head>
+
+<body>
+
+    <body>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Reflow Control</a>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <span data-feather="home"></span>
+                                    Dashboard <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file"></span>
+                                    Profiles
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="shopping-cart"></span>
+                                    Wifi Settings
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="users"></span>
+                                    Firmware
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    <div
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Status</h1>
+                        <div class="col-md-4 order-md-2 mb-4">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+
+                                <div>
+                                    <h6 class="my-0">Temperature</h6>
+                                </div>
+                                <span class="text-muted">105</span>
+                            </li>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 box-shadow modal-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Set Temperature</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Temperature</button>
+                                        <input type="text" class="form-control" id="settemp" placeholder="" value=""
+                                            required>
+                                </div>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Time
+                                        (Mins)</button><input type="text" class="form-control" id="Time" placeholder=""
+                                        value="" required>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary">Go!</button>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+
+</html>
