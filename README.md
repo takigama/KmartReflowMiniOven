@@ -24,6 +24,10 @@ thermistors, etc.
 
 ## DONE
  - add wifimanager - done
+
+## Hackaday Build log
+
+[Hackaday Page](https://hackaday.io/project/202428-another-mini-reflow-oven)
  
 ## Pics
 
