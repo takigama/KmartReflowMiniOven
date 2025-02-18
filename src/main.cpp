@@ -2,7 +2,7 @@
 #include "config.h"
 #include "Display.h"
 #include "Button.h"
-#include "WebServer.h"
+#include "WebInterface.h"
 
 WiFiManager wm; // Wifimanager is such an awesome project
 
@@ -23,9 +23,9 @@ void setup(void)
 {
   Serial.begin(115200);
 
-  pinMode(15, LEDC_PIN);    // SSR PWM
-  pinMode(35, INPUT);       // button 0
-  pinMode(0, INPUT_PULLUP); // button 1
+  pinMode(SSR_PIN, LEDC_PIN);    // SSR PWM
+  pinMode(BUTTON_1_PIN, INPUT);       // button 0
+  pinMode(BUTTON_2_PIN, INPUT_PULLUP); // button 1
 
   int timeoutWifi = 0;
 
@@ -34,37 +34,21 @@ void setup(void)
 
   LittleFS.begin(true);
 
-  // TODO WIFI MANAGER
-
   bool res;
-  wm.setSaveConfigCallback(saveConfigCallback);
-  res = wm.autoConnect("ReflowOven"); // password protected ap
+  wm.setSaveConfigCallback(saveConfigCallback); // to work around wmmanager not releasing port 80
+  res = wm.autoConnect("ReflowOven"); // Unprotected ap for config
 
   if (!res)
   {
-    Serial.println("Failed to connect");
+    Serial.println("Failed to to WiFi connect");
     ESP.restart();
   }
   else
   {
     // if you get here you have connected to the WiFi
-    Serial.println("connected...yeey :)");
+    Serial.println("WiFi Connected");
   }
 
-  // ENDTODO
-
-  // WiFi.mode(WIFI_STA);
-  // WiFi.begin(ssid, password);
-  // while (WiFi.status() != WL_CONNECTED)
-  // {
-  //   delay(500);
-  //   Serial.print(".");
-  //   if ((timeoutWifi++) > 20)
-  //   {
-  //     Serial.println("Wifi timout");
-  //     break;
-  //   }
-  // }
   initWebServer();
 
   Serial.println("About to begin()");
@@ -89,14 +73,13 @@ void loop()
   int v = 3;
   while (1)
   {
-    yield(); // We must yield() to stop a watchdog timeout.
+    yield(); // We must yield() to stop a watchdog timeout but i've forgotten where this yield comes from
 
     // TODO: REMOVE LATER
     ElegantOTA.loop();
     // ENDTODO
 
-    pollButtons();
-
-    
+    // TODO move buttons to ISR's?
+    pollButtons(); 
   }
 }

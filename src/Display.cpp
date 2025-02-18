@@ -4,13 +4,16 @@ TFT_eSPI *tft;
 
 void initDisplay()
 {
+#ifdef DISPLAY_ENABLED
     tft = new TFT_eSPI();
     tft->init();
     tft->setRotation(1);
+#endif
 }
 
 void updateDisplay(int duty, int temp)
 {
+#ifdef DISPLAY_ENABLED
     // TODO: until i have a real temp, lets set it randomally betwen 15 and 250
     temp = (int)random(15, 250);
     // Fill screen with grey so we can see the effect of printing with and without
@@ -37,7 +40,7 @@ void updateDisplay(int duty, int temp)
         tft->println("Running!");
         tft->setTextColor(TFT_WHITE, TFT_BLACK);
     }
-    tft->printf("Power: %d%%", ((duty*100)/dcMAX));
+    tft->printf("Power: %d%%", ((duty * 100) / dcMAX));
     tft->println();
 
     if (temp < 30)
@@ -54,4 +57,5 @@ void updateDisplay(int duty, int temp)
     }
     tft->printf("Temperture: %d", temp);
     tft->setTextColor(TFT_WHITE, TFT_BLACK);
+#endif
 }
