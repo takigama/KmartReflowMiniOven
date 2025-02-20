@@ -23,6 +23,7 @@ thermistors, etc.
  - design the daughter board for the lilygo t-display to 4 temperature sensors and 2 SSR controls
 
 ## DONE
+ - made a small test board
  - add wifimanager - done
 
 ## Hackaday Build log

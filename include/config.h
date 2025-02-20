@@ -1,7 +1,8 @@
 #pragma once
 
 #define THERMISTOR_1_TYPE 1 // we'll pull the types from marlin later
-#define LEDC_PIN 2 // pin we control SSR from
+// #define LEDC_PIN 2 // pin we control SSR from
+#define THERMISTOR_PIN 32 // pin for reading voltage
 #define TOUCH_CS -1 // clear off touch pin
 #define DISPLAY_ENABLED
 #define DISPLAY_TYPE 1  // we ony have 1 - tft on t-display
