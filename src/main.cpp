@@ -14,7 +14,8 @@ bool restartBeforeBind = false; // hack to get around incompatability between wi
 #include <ElegantOTA.h>
 // ENDTODO
 
-void saveConfigCallback () {
+void saveConfigCallback()
+{
   Serial.println("Should save config - lets hope the config was saved before we... restart");
   restartBeforeBind = true;
 }
@@ -23,9 +24,11 @@ void setup(void)
 {
   Serial.begin(115200);
 
-  pinMode(SSR_PIN, LEDC_PIN);    // SSR PWM
-  pinMode(BUTTON_1_PIN, INPUT);       // button 0
+  pinMode(SSR_PIN, OUTPUT);            // SSR PWM
+  pinMode(BUTTON_1_PIN, INPUT);        // button 0
   pinMode(BUTTON_2_PIN, INPUT_PULLUP); // button 1
+  pinMode(THERMISTOR_PIN, INPUT);
+  Serial.printf("thermistor: %d", analogRead(THERMISTOR_PIN));
 
   int timeoutWifi = 0;
 
@@ -36,7 +39,7 @@ void setup(void)
 
   bool res;
   wm.setSaveConfigCallback(saveConfigCallback); // to work around wmmanager not releasing port 80
-  res = wm.autoConnect("ReflowOven"); // Unprotected ap for config
+  res = wm.autoConnect("ReflowOven");           // Unprotected ap for config
 
   if (!res)
   {
@@ -52,7 +55,8 @@ void setup(void)
   initWebServer();
 
   Serial.println("About to begin()");
-  if(restartBeforeBind) {
+  if (restartBeforeBind)
+  {
     Serial.println("Have to restart as work around for wmanager");
     ESP.restart();
   }
@@ -64,12 +68,13 @@ void setup(void)
   // ENDTODO
 
   ledcSetup(LEDC_CHANNEL, LEDC_FREQ, LEDC_RESOLUTION);
-  ledcAttachPin(LEDC_PIN, LEDC_CHANNEL);
+  ledcAttachPin(SSR_PIN, LEDC_CHANNEL);
+  ledcWrite(LEDC_CHANNEL, dcycle);
 }
 
 void loop()
 {
-
+  int lastmillis = 0;
   int v = 3;
   while (1)
   {
@@ -80,6 +85,11 @@ void loop()
     // ENDTODO
 
     // TODO move buttons to ISR's?
-    pollButtons(); 
+    pollButtons();
+    if((millis() - lastmillis) > 1000) {
+      lastmillis = millis();
+      Serial.printf("thermistor: %d", analogRead(THERMISTOR_PIN));
+      Serial.println("");
+    }
   }
 }
