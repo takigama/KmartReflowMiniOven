@@ -1813,6 +1813,16 @@
 	)
 	(wire
 		(pts
+			(xy 90.17 57.15) (xy 100.33 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05b0d2bc-172c-470e-b49e-4ba3ed7f7d3c")
+	)
+	(wire
+		(pts
 			(xy 135.89 97.79) (xy 142.24 97.79)
 		)
 		(stroke
@@ -1880,16 +1890,6 @@
 			(type default)
 		)
 		(uuid "16e9f241-ceed-4558-887b-def432dc2804")
-	)
-	(wire
-		(pts
-			(xy 50.8 72.39) (xy 57.15 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17fe6b5e-8478-42d6-b754-47579606c542")
 	)
 	(wire
 		(pts
@@ -2143,13 +2143,13 @@
 	)
 	(wire
 		(pts
-			(xy 50.8 69.85) (xy 57.15 69.85)
+			(xy 90.17 67.31) (xy 100.33 67.31)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5bf88b89-73b1-406a-b43b-7462dd1d69ad")
+		(uuid "5cd76ea0-750f-4d35-af49-8ae9ffa0fd99")
 	)
 	(wire
 		(pts
@@ -2230,6 +2230,16 @@
 			(type default)
 		)
 		(uuid "7493a704-1b3b-4f5f-a751-f0d0a0bf1301")
+	)
+	(wire
+		(pts
+			(xy 90.17 54.61) (xy 109.22 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74f66c5b-b5e5-459e-aec8-f66a8000cac1")
 	)
 	(wire
 		(pts
@@ -2473,6 +2483,16 @@
 	)
 	(wire
 		(pts
+			(xy 90.17 64.77) (xy 100.33 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aca95894-c4d3-4b21-94d1-4d2e2194eb27")
+	)
+	(wire
+		(pts
 			(xy 71.12 24.13) (xy 67.31 24.13)
 		)
 		(stroke
@@ -2490,16 +2510,6 @@
 			(type default)
 		)
 		(uuid "bb07dd6a-f143-4000-9b79-272c4ab52d20")
-	)
-	(wire
-		(pts
-			(xy 90.17 54.61) (xy 100.33 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb675c7f-38f3-4377-b910-c1cb9eb51fbc")
 	)
 	(wire
 		(pts
@@ -2530,16 +2540,6 @@
 			(type default)
 		)
 		(uuid "c3aa9461-de7f-4ac5-bcb9-07b11a8a2dfd")
-	)
-	(wire
-		(pts
-			(xy 50.8 74.93) (xy 57.15 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4f45fb7-0526-49eb-836e-a20559b627a2")
 	)
 	(wire
 		(pts
@@ -2884,24 +2884,24 @@
 		(uuid "8ba6b87f-851b-49e5-bb89-92e66d423226")
 	)
 	(label "THERM1"
-		(at 50.8 74.93 180)
+		(at 100.33 64.77 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "8ce303a2-138b-41c0-882d-9a6ec12d2513")
 	)
 	(label "THERM2"
-		(at 50.8 72.39 180)
+		(at 100.33 67.31 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "9cc7f40b-887a-4dcf-83e7-120cefaa3cd3")
 	)
@@ -2917,13 +2917,13 @@
 		(uuid "a68bb1c6-1acd-4876-86ae-788a590c2d97")
 	)
 	(label "THERM3"
-		(at 50.8 69.85 180)
+		(at 100.33 57.15 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "ad12e69b-8bd6-4606-bb43-e730d21df856")
 	)
@@ -3560,7 +3560,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7k"
+		(property "Value" "5k"
 			(at 68.58 140.97 90)
 			(effects
 				(font
@@ -3898,7 +3898,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7k"
+		(property "Value" "1k"
 			(at 68.58 114.3 90)
 			(effects
 				(font
@@ -4692,7 +4692,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 100.33 54.61 270)
+		(at 109.22 54.61 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4700,7 +4700,7 @@
 		(dnp no)
 		(uuid "d25efb68-9501-4ff9-88c4-e9063444941b")
 		(property "Reference" "#PWR04"
-			(at 96.52 54.61 0)
+			(at 105.41 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4709,7 +4709,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 103.378 54.61 90)
+			(at 112.268 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4718,7 +4718,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.33 54.61 0)
+			(at 109.22 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4727,7 +4727,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.33 54.61 0)
+			(at 109.22 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4736,7 +4736,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 100.33 54.61 0)
+			(at 109.22 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5240,7 +5240,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7k"
+		(property "Value" "2k"
 			(at 68.58 128.27 90)
 			(effects
 				(font
