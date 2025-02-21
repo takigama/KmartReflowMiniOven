@@ -57,7 +57,7 @@ void initWebServer()
       Serial.println("");
       if(dutyc < 0 || dutyc > 100) {
         Serial.println("Dutyc out of range");
-        endarg = "DutyCNoRange";
+        strcpy(endarg,"DutyRangeFail");
       }
       else 
       {
@@ -67,11 +67,11 @@ void initWebServer()
         Serial.printf("Setting dcycle to \"%d\"", dcycle);
         Serial.println("");
         ledcWrite(LEDC_CHANNEL, dcycle);
-        endarg = "DutySuccess";
+        strcpy(endarg,"DusySuccessOK");
       }
     } else {
       Serial.println("No duty in params");
-      endarg = "NoDutySetFail";
+      strcpy(endarg,"NoDutySetFail");
     }
     Serial.println("giving up on duty");
     request->send(200, "text/plain", endarg); });
