@@ -2,6 +2,7 @@
 #include "Temperature.h"
 
 AsyncWebServer server(80); // our webserver
+char endarg[32];
 
 void initWebServer()
 {
@@ -56,6 +57,7 @@ void initWebServer()
       Serial.println("");
       if(dutyc < 0 || dutyc > 100) {
         Serial.println("Dutyc out of range");
+        endarg = "DutyCNoRange";
       }
       else 
       {
@@ -65,12 +67,14 @@ void initWebServer()
         Serial.printf("Setting dcycle to \"%d\"", dcycle);
         Serial.println("");
         ledcWrite(LEDC_CHANNEL, dcycle);
+        endarg = "DutySuccess";
       }
     } else {
       Serial.println("No duty in params");
+      endarg = "NoDutySetFail";
     }
     Serial.println("giving up on duty");
-    request->send(200, "text/plain", "DutySetSuccess"); });
+    request->send(200, "text/plain", endarg); });
 }
 
 void WebServerBegin()
