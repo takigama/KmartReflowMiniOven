@@ -3,6 +3,7 @@
 #include "Display.h"
 #include "Button.h"
 #include "WebInterface.h"
+#include "Temperature.h"
 
 WiFiManager wm; // Wifimanager is such an awesome project
 
@@ -34,6 +35,9 @@ void setup(void)
 
   initDisplay();
   updateDisplay(0, 0);
+
+  initTemp(THERMISTOR_PIN, REFERENCE_RESISTANCE, NOMINAL_RESISTANCE, NOMINAL_TEMPERATURE, B_VALUE, 4096);
+  //int pin, double referenceResistance, double nominalResistance, double nominalTemperatureCelsius, double bValue, int adcResolution = 1023
 
   LittleFS.begin(true);
 
@@ -88,7 +92,7 @@ void loop()
     pollButtons();
     if((millis() - lastmillis) > 1000) {
       lastmillis = millis();
-      Serial.printf("thermistor: %d", analogRead(THERMISTOR_PIN));
+      Serial.printf("thermistor: %d is temp %f", analogRead(THERMISTOR_PIN), getTemp());
       Serial.println("");
     }
   }
