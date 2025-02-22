@@ -78,6 +78,7 @@ async function jogmain() {
             console.log(getsecs() + "," + ctemp);
             if ((ctemp - lastTemp) > tdICare) {
                 lastTempTime = getsecs();
+                console.log("LastTempTime now ",lastTempTime);
                 lastTemp = ctemp;
             } else if ((getsecs() - lastTempTime) > 300) {
                 // we've been 5 minutes without a significant temperature change, turn it off
