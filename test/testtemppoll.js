@@ -104,7 +104,7 @@ async function jogmain() {
                 }
             }
         }
-        console.log("End loop");
+        console.log("End loop\n\n\n\n");
         await sleep(1000);
     }
 }
