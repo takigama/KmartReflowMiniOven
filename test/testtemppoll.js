@@ -60,7 +60,7 @@ async function jogmain() {
         
         // ok... this be fun?
         if (!coolingDown && !heatstarted) {
-
+            console.log("in first loop section");
             if (ctemp > coolWhen) {
                 // we wait
                 console.log("cooling down still");
@@ -90,6 +90,7 @@ async function jogmain() {
                 setDuty(0);
             }
         } else if (coolingDown) {
+            console.log("in coolingdown section");
             ctemp = getTemp();
             setDuty(0);
             if (ctemp < coolWhen) {
@@ -103,6 +104,7 @@ async function jogmain() {
                 }
             }
         }
+        console.log("End loop");
         await sleep(1000);
     }
 }
