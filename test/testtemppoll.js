@@ -20,7 +20,7 @@ const coolWhen = 30; // temperature we consider "cool"
 var dutyEnd = 70;
 var lastTempTime = 0;
 var ctemp = 0;
-var lastTemp;
+var lastTemp = 0;
 var tdICare = 2;
 var fd;
 
