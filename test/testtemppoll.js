@@ -3,6 +3,8 @@
 // 2. set duty to x+10%, wait for stable tempurature, let cool
 // ... etc then store the temp profile ramping speed - this'll be total fun
 const request = require('sync-request');
+const fs = require('fs');
+
 
 //console.log("TRY TWO: ",parseFloat(String(mytemp.body)));
 
@@ -17,6 +19,9 @@ var lastTempTime = 0;
 var ctemp = 0;
 var lastTemp;
 var tdICare = 5;
+var fd;
+
+fd = fs.openSync("data.cduty."+currentDuty);
 
 function getTemp() {
     var mytemp = request('GET', 'http://' + myip + '/gettemp1');
@@ -50,6 +55,8 @@ async function jogmain() {
         else if (heatstarted) console.log("Heating")
         else console.log("Not heating or cooling... odd?");
         console.log("TL," + getsecs() + "," + currentDuty + "," + ctemp)
+        fs.writeSync(fd, "TL," + getsecs() + "," + currentDuty + "," + ctemp)
+        
         // ok... this be fun?
         if (!coolingDown && !heatstarted) {
 
