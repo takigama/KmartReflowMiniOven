@@ -18,10 +18,8 @@ var dutyEnd = 70;
 var lastTempTime = 0;
 var ctemp = 0;
 var lastTemp;
-var tdICare = 5;
+var tdICare = 2;
 var fd;
-
-fd = fs.openSync("data.cduty."+currentDuty, "w");
 
 function getTemp() {
     var mytemp = request('GET', 'http://' + myip + '/gettemp1');
@@ -55,7 +53,7 @@ async function jogmain() {
         else if (heatstarted) console.log("Heating")
         else console.log("Not heating or cooling... odd?");
         console.log("TL," + getsecs() + "," + currentDuty + "," + ctemp)
-        fs.writeSync(fd, "TL," + getsecs() + "," + currentDuty + "," + ctemp)
+        fs.appendFileSync("data.cduty."+currentDuty, "TL," + getsecs() + "," + currentDuty + "," + ctemp+"\n")
         
         // ok... this be fun?
         if (!coolingDown && !heatstarted) {
