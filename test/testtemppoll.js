@@ -21,7 +21,7 @@ var lastTemp;
 var tdICare = 5;
 var fd;
 
-fd = fs.openSync("data.cduty."+currentDuty);
+fd = fs.openSync("data.cduty."+currentDuty, "w");
 
 function getTemp() {
     var mytemp = request('GET', 'http://' + myip + '/gettemp1');
