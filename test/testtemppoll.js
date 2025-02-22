@@ -74,8 +74,10 @@ async function jogmain() {
                 console.log("Starting temp with duty of " + currentDuty);
             }
         } else if (heatstarted) {
+            console.log("In heatstarted loop");
             ctemp = getTemp();
             console.log(getsecs() + "," + ctemp);
+            console.log("ctemp ",ctemp, " lasttemp ",lastTemp);
             if ((ctemp - lastTemp) > tdICare) {
                 lastTempTime = getsecs();
                 console.log("LastTempTime now ",lastTempTime);
