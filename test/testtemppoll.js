@@ -2,6 +2,9 @@
 // 1. set duty to x %, wait for stable tempurature, let cool
 // 2. set duty to x+10%, wait for stable tempurature, let cool
 // ... etc then store the temp profile ramping speed - this'll be total fun
+// i really need to re-write this like its a state engine, but its not too
+// important as its really a bit of one-time test code.
+// npm install sync-request before you use it
 const request = require('sync-request');
 const fs = require('fs');
 

@@ -8,11 +8,18 @@
 #define DISPLAY_TYPE 1  // we ony have 1 - tft on t-display
 
 
+
+
 // thermistor stuff
-#define REFERENCE_RESISTANCE   4700
-#define NOMINAL_RESISTANCE     100000
-#define NOMINAL_TEMPERATURE    25
-#define B_VALUE                3950
+#define N_TEMP_SENSORS 1
+#define REFERENCE_RESISTANCE_1   4700
+#define NOMINAL_RESISTANCE_1     100000
+#define NOMINAL_TEMPERATURE_1    25
+#define B_VALUE_1                3950
+#define TEMP_IDEAL_MAX_1           400
+#define TEMP_IDEAL_MIN_1         10
+#define ESP32_ADC_VREF_MV       3300
+
 
 #define SSR_PIN 15 // PWM pin for controlling SSR
 #define BUTTON_1_PIN 35
