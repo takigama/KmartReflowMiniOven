@@ -9,10 +9,13 @@ AggregateTemperature::AggregateTemperature()
 bool AggregateTemperature::addSensor(int pin, double referenceResistance, double nominalResistance,
                                      double nominalTemperatureCelsius, double bValue, int adcResolution, double idealMinTemp, double idealMaxTemp)
 {
+    Serial.println("Begin add sensor");
     thermistors[nSensorsCreated] = new NTC_Thermistor_ESP32(pin, referenceResistance, nominalResistance, nominalTemperatureCelsius, bValue, ESP32_ADC_VREF_MV, adcResolution);
     minTemps[nSensorsCreated] = idealMinTemp;
     maxTemps[nSensorsCreated] = idealMaxTemp;
     nSensorsCreated++;
+    Serial.println("Finish add sensor");
+    return true;
 }
 
 Thermistor *AggregateTemperature::getThermistorDirect(int n)
@@ -47,9 +50,11 @@ double AggregateTemperature::getCelcius()
         // if in range...
         if (inRange[i])
         {
+            // add out temperature to the value aggregator
             aggTemp += tempCalled[i];
             nSensorsUsed++;
         }
+        // add to nonce for fallback
         aggTempNonce += tempCalled[i];
     }
 
@@ -57,15 +62,18 @@ double AggregateTemperature::getCelcius()
     if(nSensorsUsed > 0) {
         if(nSensorsUsed == 1) {
             // if we only have one valid temp, use it.
+            Serial.println("Using temp sensor as single");
             return aggTemp;
         } else {
             // otherwise, lets divide and conquer
             // warning to compiler, if you tell me i cant double off an int, i will shoot you
+            Serial.println("Using temp sensor as multiple");
             return aggTemp/((double)nSensorsUsed);
         }
     } else {
         // we're outside all usable range... aggTempNonce to the rescue
         // what could go wrong here???
+        Serial.println("Using tempsensor as nonce");
         return aggTempNonce/((double)nSensorsCreated);
     }
 }

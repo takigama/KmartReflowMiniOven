@@ -1,7 +1,6 @@
 #include "Temperature.h"
 
 Thermistor* thermistor;
-#define ESP32_ADC_VREF_MV       3300
 
 
 void initTemp(int pin, double referenceResistance, double nominalResistance, double nominalTemperatureCelsius, double bValue, int adcResolution)

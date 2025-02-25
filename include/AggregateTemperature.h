@@ -3,6 +3,8 @@
 #include "config.h"
 #include "Temperature.h"
 
+
+
 class AggregateTemperature
 {
 public:

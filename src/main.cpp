@@ -3,13 +3,15 @@
 #include "Display.h"
 #include "Button.h"
 #include "WebInterface.h"
-#include "Temperature.h"
+#include "AggregateTemperature.h"
+#include "TemperatureProfile.h"
 
 WiFiManager wm; // Wifimanager is such an awesome project
 
 int dcycle = 0; // our duty cucle
 
 bool restartBeforeBind = false; // hack to get around incompatability between wifimanager and ESPAsyncWebserver
+AggregateTemperature tempController;
 
 // TODO: REMOVE THESE LATER
 #include <ElegantOTA.h>
@@ -28,18 +30,23 @@ void setup(void)
   pinMode(SSR_PIN, OUTPUT);            // SSR PWM
   pinMode(BUTTON_1_PIN, INPUT);        // button 0
   pinMode(BUTTON_2_PIN, INPUT_PULLUP); // button 1
-  pinMode(THERMISTOR_PIN, INPUT);
-  Serial.printf("thermistor: %d", analogRead(THERMISTOR_PIN));
+  pinMode(THERMISTOR_PIN_1, INPUT);
+  Serial.printf("thermistor: %d", analogRead(THERMISTOR_PIN_1));
+  Serial.println("");
 
   int timeoutWifi = 0;
 
-  initDisplay();
-  updateDisplay(0, 0);
 
-  initTemp(THERMISTOR_PIN, REFERENCE_RESISTANCE, NOMINAL_RESISTANCE, NOMINAL_TEMPERATURE, B_VALUE, 4096);
+  // initTemp(THERMISTOR_PIN_1, REFERENCE_RESISTANCE, NOMINAL_RESISTANCE, NOMINAL_TEMPERATURE, B_VALUE, 4096);
   //int pin, double referenceResistance, double nominalResistance, double nominalTemperatureCelsius, double bValue, int adcResolution = 1023
+  Serial.println("Add temp");
+  tempController.addSensor(THERMISTOR_PIN_1, REFERENCE_RESISTANCE_1, NOMINAL_RESISTANCE_1, NOMINAL_TEMPERATURE_1, B_VALUE_1, 4096, 20, 320);
+  Serial.println("Temp add past");
 
   LittleFS.begin(true);
+
+  initDisplay();
+  updateDisplay(0, 0);
 
   bool res;
   wm.setSaveConfigCallback(saveConfigCallback); // to work around wmmanager not releasing port 80
@@ -92,7 +99,7 @@ void loop()
     pollButtons();
     if((millis() - lastmillis) > 1000) {
       lastmillis = millis();
-      Serial.printf("thermistor: %d is temp %f", analogRead(THERMISTOR_PIN), getTemp());
+      Serial.printf("thermistor: %d is temp %f", analogRead(THERMISTOR_PIN_1), tempController.getCelcius());
       Serial.println("");
     }
   }

@@ -1,0 +1,23 @@
+start of profile header
+    profile_stage_1: starttime, length, starttemp, targetendtemp
+    profile_stage_2: starttime, length, starttemp, targetendtemp
+    ...
+
+
+{
+    "profileName": "My Profile 01",
+    "profiles" : [
+        {
+            "id": "1", // ordinal number for the profile
+            "lengthOfProfile": "120", // time this profile should run for
+            "targetTemperature": "150", // temp this profile should be at at end time
+        },
+        {
+            "id": "2", // ordinal number for the profile
+            "lengthOfProfile": "120", // time this profile should run for
+            "targetTemperature": "250", // temp this profile should be at at end time
+        },
+        ... etc
+    ]
+
+}
